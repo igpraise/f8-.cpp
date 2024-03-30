@@ -46,3 +46,27 @@ int main(int argc, char* argv[]) {
     }
 
     // Convert first argument to integer
+    int howMany = atoi(argv[1]);
+    if (howMany <= 0) {
+        fprintf(stderr, "Error: First argument must be a positive integer\n");
+        exit(1);
+    }
+
+    // Check length of strings
+    if (strlen(argv[2]) > MAX_LENGTH || strlen(argv[3]) > MAX_LENGTH || strlen(argv[4]) > MAX_LENGTH) {
+        fprintf(stderr, "Error: String length exceeds maximum length of %d\n", MAX_LENGTH);
+        exit(1);
+    }
+
+    // Create MyData struct
+    struct MyData myArgs;
+    myArgs.howMany = howMany;
+    strcpy(myArgs.theText, argv[2]);
+    strcpy(myArgs.directoryPath, argv[3]);
+    strcpy(myArgs.filename, argv[4]);
+
+    // Create text file
+    createTextFile(myArgs);
+
+    return 0;
+}
