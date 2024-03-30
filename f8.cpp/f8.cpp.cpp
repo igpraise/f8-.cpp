@@ -37,3 +37,12 @@ void createTextFile(struct MyData args) {
 
     printf("Text file created successfully at location: %s\n", location);
 }
+
+int main(int argc, char* argv[]) {
+    if (argc != 5) {
+        fprintf(stderr, "Error: Incorrect number of arguments\n");
+        fprintf(stderr, "Usage: %s <positive integer> <string> <string> <string>\n", argv[0]);
+        exit(1);
+    }
+
+    // Convert first argument to integer
